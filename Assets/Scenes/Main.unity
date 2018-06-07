@@ -9974,7 +9974,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 1, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -10025,7 +10025,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b10cfc5c54db6a4584f38490f6e902d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platform: {fileID: 1142065693596224, guid: 9542f6ed19b787e4fab985054bd6c578, type: 2}
+  platform: {fileID: 1207890324280170, guid: f13da16bd2ef0fc43a014617fb119521, type: 2}
+--- !u!1001 &1566840856
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4555284049942514, guid: f13da16bd2ef0fc43a014617fb119521, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 198.57513
+      objectReference: {fileID: 0}
+    - target: {fileID: 4555284049942514, guid: f13da16bd2ef0fc43a014617fb119521, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 237.05797
+      objectReference: {fileID: 0}
+    - target: {fileID: 4555284049942514, guid: f13da16bd2ef0fc43a014617fb119521, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4555284049942514, guid: f13da16bd2ef0fc43a014617fb119521, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4555284049942514, guid: f13da16bd2ef0fc43a014617fb119521, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4555284049942514, guid: f13da16bd2ef0fc43a014617fb119521, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4555284049942514, guid: f13da16bd2ef0fc43a014617fb119521, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4555284049942514, guid: f13da16bd2ef0fc43a014617fb119521, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: f13da16bd2ef0fc43a014617fb119521, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1628618751
 GameObject:
   m_ObjectHideFlags: 0
