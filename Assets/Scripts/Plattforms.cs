@@ -27,11 +27,9 @@ public class Plattforms : MonoBehaviour {
                 GameObject pen = Instantiate(platform);
                 pen.GetComponent<Transform>().transform.position = new Vector2((float)posX, (float)posY);
                 posX += 0.1;
-                Debug.Log(posX);
             }
             posX = -7;
             posY -= 0.1;
-            Debug.Log(posY);
         }
     }
 
@@ -47,11 +45,9 @@ public class Plattforms : MonoBehaviour {
                 GameObject pen = Instantiate(platform);
                 pen.GetComponent<Transform>().transform.position = new Vector2((float)posX, (float)posY);
                 posX += 0.1;
-                Debug.Log(posX);
             }
             posX = -1.8;
             posY -= 0.1;
-            Debug.Log(posY);
         }
     }
 
@@ -67,11 +63,9 @@ public class Plattforms : MonoBehaviour {
                 GameObject pen = Instantiate(platform);
                 pen.GetComponent<Transform>().transform.position = new Vector2((float)posX, (float)posY);
                 posX += 0.1;
-                Debug.Log(posX);
             }
             posX = 3.5;
             posY -= 0.1;
-            Debug.Log(posY);
         }
     }
 
@@ -87,11 +81,9 @@ public class Plattforms : MonoBehaviour {
                 GameObject pen = Instantiate(platform);
                 pen.GetComponent<Transform>().transform.position = new Vector2((float)posX, (float)posY);
                 posX += 0.1;
-                Debug.Log(posX);
             }
             posX = -3.5;
             posY -= 0.1;
-            Debug.Log(posY);
         }
     }
 
@@ -107,11 +99,9 @@ public class Plattforms : MonoBehaviour {
                 GameObject pen = Instantiate(platform);
                 pen.GetComponent<Transform>().transform.position = new Vector2((float)posX, (float)posY);
                 posX += 0.1;
-                Debug.Log(posX);
             }
             posX = 0.9;
             posY -= 0.1;
-            Debug.Log(posY);
         }
     }
 	

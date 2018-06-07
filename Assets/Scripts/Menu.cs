@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour {
 
@@ -15,8 +16,6 @@ public class Menu : MonoBehaviour {
     public GameObject Player3Char;
     public GameObject Player4Exit;
     public GameObject Player4Char;
-    //public GameObject 
-    //public GameObject 
 
     private void Start()
     {
@@ -29,6 +28,11 @@ public class Menu : MonoBehaviour {
     {
         StartMenu.SetActive(false);
         ModeMenu.SetActive(true);
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadSceneAsync("Main");
     }
 
     public void DeathBattle()
@@ -47,21 +51,25 @@ public class Menu : MonoBehaviour {
         {
             Player1Exit.SetActive(true);
             Player1Char.SetActive(true);
+            GlobalData.Player1 = true;
         }
         else if(player == 2)
         {
             Player2Exit.SetActive(true);
             Player2Char.SetActive(true);
+            GlobalData.Player2 = true;
         }
         else if(player == 3)
         {
             Player3Exit.SetActive(true);
             Player3Char.SetActive(true);
+            GlobalData.Player3 = true;
         }
         else if(player == 4)
         {
             Player4Exit.SetActive(true);
             Player4Char.SetActive(true);
+            GlobalData.Player4 = true;
         }
     }
 
@@ -71,21 +79,25 @@ public class Menu : MonoBehaviour {
         {
             Player1Exit.SetActive(false);
             Player1Char.SetActive(false);
+            GlobalData.Player1 = false;
         }
         else if (player == 2)
         {
             Player2Exit.SetActive(false);
             Player2Char.SetActive(false);
+            GlobalData.Player2 = false;
         }
         else if (player == 3)
         {
             Player3Exit.SetActive(false);
             Player3Char.SetActive(false);
+            GlobalData.Player3 = false;
         }
         else if (player == 4)
         {
             Player4Exit.SetActive(false);
             Player4Char.SetActive(false);
+            GlobalData.Player4 = false;
         }
     }
 
