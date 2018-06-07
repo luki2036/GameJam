@@ -5,19 +5,33 @@ using UnityEngine.Networking;
 public class Playercontrolls : NetworkBehaviour{
 
     Playermoves playermoves;
-    byte jumpcount;
-    string onWallAtached;
-    float usualGravity;
+
+    //Player data
     float maxSpeed;
     Rigidbody2D rb;
+
+    //Data für Walljumps
+    float usualGravity;
+    string onWallAtached;
+
+    //Data für Sprünge generell
+    byte jumpcount;
+
+
+    //Data für das Schießen
+    Transform aim;
+    Transform gunExit;
+    public GameObject bullet;
+
 
     // Use this for initialization
     void Start () {
         playermoves = new Playermoves();
-        rb = GetComponent<Rigidbody2D>();
         maxSpeed = 100f;
-        onWallAtached = "";
+        rb = GetComponent<Rigidbody2D>();
         usualGravity = rb.gravityScale;
+        onWallAtached = "";
+        jumpcount = 0;
     }
 
     public override void OnStartLocalPlayer()
@@ -26,13 +40,18 @@ public class Playercontrolls : NetworkBehaviour{
         gameObject.name = "LocalPlayer";
     }
 
+    
+
     // Update is called once per frame
     void Update () {
+        // Ist localer Spieler?
         if (!isLocalPlayer)
             return;
 
+        //WallJump Checkup
         if (string.IsNullOrEmpty(onWallAtached))
         {
+            //Wenn kein Walljump:
             if (Input.GetAxisRaw("Horizontal") > 0)
             {
                 playermoves.Run(1,maxSpeed,rb);
@@ -49,18 +68,14 @@ public class Playercontrolls : NetworkBehaviour{
         }
         else
         {
-            
+            // Wenn WallJump:
             if (Input.GetButtonDown("Jump"))
             {
                 rb.gravityScale = usualGravity;
                 if (onWallAtached== "WallL")
-                {
                     playermoves.WallJump(1, rb);
-                }
                 else if (onWallAtached == "WallR")
-                {
                     playermoves.WallJump(-1, rb);
-                }
                 jumpcount++;
                 onWallAtached = "";
             }
@@ -92,6 +107,24 @@ public class Playercontrolls : NetworkBehaviour{
             rb.velocity = new Vector2(0f, rb.velocity.y);
         }
     }
+
+    public void Fire(Transform aim, Transform gunExit)
+    {
+        this.aim = aim;
+        this.gunExit = gunExit;
+        CmdDoFire();
+    }
+
+
+    [Command]
+    public void CmdDoFire()
+    {
+        var spawn = (GameObject) Instantiate(bullet, gunExit.position, new Quaternion());
+        Rigidbody2D spawnrb = spawn.GetComponent<Rigidbody2D>();
+        spawnrb.velocity = (aim.position-gunExit.position)*0.7f;
+        spawnrb.velocity += (rb.velocity*0.7f);
+        NetworkServer.Spawn(spawn);
+    }
 }
 
 public class Playermoves { 
@@ -112,4 +145,5 @@ public class Playermoves {
     {
         rb.velocity = new Vector2((dir*50), 75f);
     }
+
 }

@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class Guncontroll : NetworkBehaviour {
+public class Guncontroll : NetworkBehaviour{
 
     Transform aim;
-    public GameObject bullet;
     public Transform gunExit;
     bool canShoot;
 
     private void Start()
     {
         aim = GameObject.Find("AimTemp").GetComponent<Transform>();
-        canShoot = true;    
+        canShoot = true;        
     }
 
     void Update()
@@ -25,26 +24,18 @@ public class Guncontroll : NetworkBehaviour {
 
         if (Input.GetButton("Fire1") && canShoot)
         {
-            CmdShoot(this.GetComponentInParent<Rigidbody2D>(), aim, this.GetComponentInParent<Transform>(), gunExit, bullet);
+            Playercontrolls servercontrolls = this.GetComponentInParent<Playercontrolls>();
+            servercontrolls.Fire(this.aim, this.gunExit);
             canShoot = false;
             StartCoroutine(waitForNextShot());
         }
-    }
-
-    
-    //[Command]
-    public void CmdShoot(Rigidbody2D playerrb, Transform aim, Transform player, Transform gunExit, GameObject bullet)
-    {
-        var spawning = GameObject.Instantiate(bullet, gunExit.position, new Quaternion());
-        Rigidbody2D rb = spawning.GetComponent<Rigidbody2D>();
-        rb.velocity = (aim.position - player.position) * 0.7f;
-        rb.velocity += (playerrb.velocity * 0.7f);
-        NetworkServer.Spawn(spawning);
+            
+        
     }
 
     IEnumerator waitForNextShot()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
         canShoot = true;
     }
 }

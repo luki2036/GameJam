@@ -282,6 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50381aedb15f6944f9caef518d494803, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: 1326399810953694, guid: 4d27985617234a14e836197580eb6e2c, type: 2}
 --- !u!114 &114388651370778264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -293,7 +294,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef3deb0bbe921a5439d0f949ccd38bfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 1326399810953694, guid: 4d27985617234a14e836197580eb6e2c, type: 2}
   gunExit: {fileID: 4775966033602552}
 --- !u!212 &212131571512493006
 SpriteRenderer:

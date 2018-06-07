@@ -184,10 +184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b492171ca3a06134ca85f27c99fa59ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SyncVarDirtyBits: 0
-  m_LastSendTime: 0
-  m_SyncVarGuard: 0
-  m_MyView: {fileID: 0}
 --- !u!212 &212684063566309944
 SpriteRenderer:
   m_ObjectHideFlags: 1
