@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Playercontrolls : MonoBehaviour {
+using UnityEngine.Networking;
+public class Playercontrolls : NetworkBehaviour{
 
     Playermoves playermoves;
     byte jumpcount;
@@ -19,9 +19,17 @@ public class Playercontrolls : MonoBehaviour {
         onWallAtached = "";
         usualGravity = rb.gravityScale;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    public override void OnStartLocalPlayer()
+    {
+        base.OnStartLocalPlayer();
+        gameObject.name = "LocalPlayer";
+    }
+
+    // Update is called once per frame
+    void Update () {
+        if (!isLocalPlayer)
+            return;
 
         if (string.IsNullOrEmpty(onWallAtached))
         {
@@ -67,6 +75,9 @@ public class Playercontrolls : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!isLocalPlayer)
+            return;
+
         jumpcount = 0;
         if (collision.collider.tag == "WallL")
         {

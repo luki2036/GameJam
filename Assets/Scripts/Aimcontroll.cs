@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Aimcontroll : MonoBehaviour {
+public class Aimcontroll : NetworkBehaviour{
 
     private void Update()
     {
