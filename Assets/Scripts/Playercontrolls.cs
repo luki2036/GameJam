@@ -19,8 +19,6 @@ public class Playercontrolls : NetworkBehaviour{
 
 
     //Data für das Schießen
-    Transform aim;
-    Transform gunExit;
     public GameObject bullet;
 
 
@@ -108,21 +106,19 @@ public class Playercontrolls : NetworkBehaviour{
         }
     }
 
-    public void Fire(Transform aim, Transform gunExit)
-    {
-        this.aim = aim;
-        this.gunExit = gunExit;
-        CmdDoFire();
-    }
-
 
     [Command]
-    public void CmdDoFire()
+    public void CmdDoFire(float aimX, float aimY,float gunExitX, float gunExitY)
     {
-        var spawn = (GameObject) Instantiate(bullet, gunExit.position, new Quaternion());
+        RpcDoFire(aimX,aimY,gunExitX,gunExitY);
+    }
+    [ClientRpc]
+    public void RpcDoFire(float aimX, float aimY, float gunExitX, float gunExitY)
+    {
+        var spawn = (GameObject)Instantiate(bullet, new Vector3(gunExitX,gunExitY), new Quaternion());
         Rigidbody2D spawnrb = spawn.GetComponent<Rigidbody2D>();
-        spawnrb.velocity = (aim.position-gunExit.position)*0.7f;
-        spawnrb.velocity += (rb.velocity*0.7f);
+        spawnrb.velocity = (new Vector3(aimX,aimY) - new Vector3(gunExitX, gunExitY)) * 0.7f;
+        spawnrb.velocity += (rb.velocity * 0.7f);
         NetworkServer.Spawn(spawn);
     }
 }

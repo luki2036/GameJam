@@ -25,7 +25,7 @@ public class Guncontroll : NetworkBehaviour{
         if (Input.GetButton("Fire1") && canShoot)
         {
             Playercontrolls servercontrolls = this.GetComponentInParent<Playercontrolls>();
-            servercontrolls.Fire(this.aim, this.gunExit);
+            servercontrolls.CmdDoFire(aim.position.x, aim.position.y, gunExit.position.x, gunExit.position.y);
             canShoot = false;
             StartCoroutine(waitForNextShot());
         }
