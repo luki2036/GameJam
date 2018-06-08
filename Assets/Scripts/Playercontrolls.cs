@@ -133,7 +133,7 @@ public class Playermoves {
 
     public void NormalJump(Rigidbody2D rb)
     {
-        rb.velocity = new Vector2(rb.velocity.x, 100f);
+        rb.velocity = new Vector2(rb.velocity.x, 30f);
         
     }
 
